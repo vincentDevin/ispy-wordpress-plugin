@@ -1,0 +1,68 @@
+body{
+	background-color: #522e91;
+}
+
+h1{
+	color:white;
+	font-size: 36px;
+	font-weight: bold;
+}
+
+.button{
+	background-color: #00a4e4;
+	color: white;
+	font-size: 36px;
+	cursor: pointer;
+	text-align: center;
+	margin-top: 5px;
+	border: none;
+	border-radius: 25px;
+	box-shadow: 0 9px #522e91;
+	padding: 18px 16px;
+
+}
+
+.button:hover {
+	background-color: #c1d82f
+}
+
+.button:active {
+  background-color: #c1d82f;
+  box-shadow: 0 5px #251540;
+  transform: translateY(4px);
+}
+
+#background{
+	height: 720px;
+	width: 1280px;
+	border: 5px;
+	border-style: solid;
+	border-color: #c1d82f;
+	border-width: 10px;
+	border-radius: 20px;
+	background-image: url(images/DesertScale.jpg);
+	background-repeat: no-repeat;
+}
+
+#inventory{
+	height: 100px;
+	width: 1285px;
+	border-radius: 20px;
+	background-color: #c1d82f;
+	margin-top: 5px;
+	padding: 7px;
+}
+
+#inventory img{
+	filter: brightness(0);
+	border-radius:20px;
+	margin-right: 10px; 
+}
+
+#buttons{
+	float:right;
+}
+
+.clickImage{
+	position: absolute;
+}

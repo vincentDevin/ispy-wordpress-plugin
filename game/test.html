@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="game.css">
+		<title>Game</title>
+	</head>
+	<body onload = "javascript:randomizePosition()">
+		<header>
+			<h1>I-Spy</h1>
+		</header>
+
+		<div id="background">
+			<div id = "findImages">
+				<!-- how will we get this information from the backend? -->
+				<img src="images/Jellyfish.jpg" width = 200px  class = "clickImage" id="clickImage1" onclick='clickImage("clickImage1", "inv1",0);'/>
+				<img src="images/Penguins.jpg" width = 200px class = "clickImage" id="clickImage2" onclick='clickImage("clickImage2", "inv2",1);'/>
+				<img src="images/Tulips.jpg" width = 200px class = "clickImage" id="clickImage3" onclick='clickImage("clickImage3", "inv3",2);'/>
+			</div>
+		</div>
+
+		<div id="inventory"> 
+			<div id="buttons">
+				<input type="button" class ="button" id="myBtn" value="Check" onclick='check();'>
+				<input type="button" class = "button" id="myBtn2" value="Reset" onclick='reset();'>
+			</div>
+			<div id="inventoryImages">
+				<img src="images/Jellyfish.jpg" height = 100px width = 100px id = inv1>
+				<img src="images/Penguins.jpg" height = 100px width = 100px id = inv2>
+				<img src="images/Tulips.jpg" height = 100px width = 100px id = inv3>
+			</div>
+			
+		</div>
+		
+
+		<script type="text/javascript">
+			
+			//variables and arrays
+			//store all of the object images and inventory images into an array to pull from later
+			var images = [
+				document.getElementById("clickImage1"),
+				document.getElementById("clickImage2"),
+				document.getElementById("clickImage3")
+			]
+
+			var inventory = [
+				document.getElementById("inv1"),
+				document.getElementById("inv2"),
+				document.getElementById("inv3")
+			]
+
+			//create an empty array
+			var imageClicked = new Array(3);
+
+			//populate with false boolean values
+			for(i = 0; i < imageClicked.length; i++){
+				imageClicked[i] = false;
+			}
+
+			//pull buttons into the script
+			var btn = document.getElementById("myBtn");
+			var btn2 = document.getElementById("myBtn2");
+
+			//functions	
+			//prevent images from layering and leaving the boundary of the background div, if we use randomize.
+
+			function randomizePosition(){
+				var background = document.getElementById("background");
+				var backgroundPostion = background.getBoundingClientRect();
+
+				for(x = 0; x < 3; x++){
+
+					var picture = images[x];
+
+					var randomX = Math.round(Math.random() * backgroundPostion.width);
+					var randomY = Math.round(Math.random() * backgroundPostion.height);
+
+					picture.style.top = randomY + 'px';
+					picture.style.left = randomX + 'px';
+				}
+			}
+
+			//takes Object Image ID, Inventory Image ID, and an int representing a position on the image clicked boolean array
+
+			function clickImage(imgID,invID,imgClick){
+
+				console.log(imgID + " clicked");
+				document.getElementById(imgID).style.border = "10px solid #00a4e4";
+				document.getElementById(imgID).style.borderRadius = "10px";
+				document.getElementById(invID).style.filter = "brightness(1)";
+				imageClicked[imgClick] = true;
+				console.log([imgClick]);
+
+			};
+
+			function check(){
+				if(imageClicked.includes(false)){
+					alert("Keep looking.");
+				}
+				else{
+					alert("You found them all");
+				}
+			}
+
+			function reset(){
+				for(i = 0; i < imageClicked.length; i++){
+					imageClicked[i] = false;
+					images[i].style.border ="";
+					images[i].style.borderRadius ="";
+					inventory[i].style.filter = "brightness(0)";
+				}
+				randomizePosition();
+			}
+
+		</script>
+	</body>
+</html>
