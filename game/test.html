@@ -9,29 +9,50 @@
 		<header>
 			<h1>I-Spy</h1>
 		</header>
+		<main>
+			<div id="background">
+				<img src="images/DesertScale.jpg" id="bg" width = 1280px height = 720px>
+				<div id = "findImages">
+					<!-- how will we get this information from the backend? -->
+					<img src="images/Jellyfish.jpg" width = 200px  class = "clickImage" id="clickImage1" onclick='clickImage("clickImage1", "inv1",0);'/>
+					<img src="images/Penguins.jpg" width = 200px class = "clickImage" id="clickImage2" onclick='clickImage("clickImage2", "inv2",1);'/>
+					<img src="images/Tulips.jpg" width = 200px class = "clickImage" id="clickImage3" onclick='clickImage("clickImage3", "inv3",2);'/>
+				</div>
+			</div>
 
-		<div id="background">
-			<div id = "findImages">
-				<!-- how will we get this information from the backend? -->
-				<img src="images/Jellyfish.jpg" width = 200px  class = "clickImage" id="clickImage1" onclick='clickImage("clickImage1", "inv1",0);'/>
-				<img src="images/Penguins.jpg" width = 200px class = "clickImage" id="clickImage2" onclick='clickImage("clickImage2", "inv2",1);'/>
-				<img src="images/Tulips.jpg" width = 200px class = "clickImage" id="clickImage3" onclick='clickImage("clickImage3", "inv3",2);'/>
+			<div id="inventory"> 
+				<div id="buttons">
+					<input type="button" class ="button" id="myBtn" value="Check" onclick='check();'>
+					<input type="button" class = "button" id="myBtn2" value="Reset" onclick='reset();'>
+				</div>
+				<div id="inventoryImages">
+					<img src="images/Jellyfish.jpg" height = 100px width = 100px id = inv1>
+					<img src="images/Penguins.jpg" height = 100px width = 100px id = inv2>
+					<img src="images/Tulips.jpg" height = 100px width = 100px id = inv3>
+				</div>
+				
 			</div>
-		</div>
-
-		<div id="inventory"> 
-			<div id="buttons">
-				<input type="button" class ="button" id="myBtn" value="Check" onclick='check();'>
-				<input type="button" class = "button" id="myBtn2" value="Reset" onclick='reset();'>
-			</div>
-			<div id="inventoryImages">
-				<img src="images/Jellyfish.jpg" height = 100px width = 100px id = inv1>
-				<img src="images/Penguins.jpg" height = 100px width = 100px id = inv2>
-				<img src="images/Tulips.jpg" height = 100px width = 100px id = inv3>
-			</div>
+		</main>
 			
-		</div>
-		
+		<aside>
+			<h1 id="side">Add Your Own Images</h1>
+
+			<p>Background Image:
+				<input type="text" id="back">
+			</p>
+			<p>Image 1:
+				<input type="text" id="1">
+			</p>
+			<p>Image 2:
+				<input type="text" id="2">
+			</p>
+			<p>Image 3:
+				<input type="text" id="3">
+			</p>
+			<input type="button" name="submit" value="submit" onclick="getImages()">
+
+			<input type="button" name="defaults" value="defaults" onclick="getDefaults()">
+		</aside>
 
 		<script type="text/javascript">
 			
@@ -119,9 +140,49 @@
 				randomizePosition();
 			}
 
-			function setImage(newImage, imgID){
-				document.getElementById(imgID).src = newImage
+			 function setImage(newImage, imgID, invID){
+			 	document.getElementById(imgID).src = newImage;
+			 	document.getElementById(invID).src = newImage;
+
+			 }
+
+			 function setBackground(newImage, imgID){
+			 	document.getElementById(imgID).src = newImage;
+			 }
+
+			function getImages(){
+
+				if(document.getElementById("back").value == "" ||
+					document.getElementById("1").value == "" ||
+					document.getElementById("2").value == "" ||
+					document.getElementById("3").value == ""){
+
+					alert("enter something");
+
+				}
+				else{
+					backgroundImage = document.getElementById("back").value;
+					image1 = document.getElementById("1").value;
+					image2 = document.getElementById("2").value;
+					image3 = document.getElementById("3").value;
+					console.log("images: " + '\n' + image1 + '\n' + image2 + '\n' + image3);
+
+					setBackground(backgroundImage, "bg");
+					setImage(image1, "clickImage1", "inv1");
+					setImage(image2, "clickImage2", "inv2");
+					setImage(image3, "clickImage3", "inv3");
+
+					document.getElementById("back").value = "";
+					document.getElementById("1").value = "";
+					document.getElementById("2").value = "";
+					document.getElementById("3").value = "";
+				}
 			}
+
+			function getDefaults(){
+					//I can't think of a good reason to have this...
+					location.reload();
+				}
 
 		</script>
 	</body>

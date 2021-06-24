@@ -1,3 +1,20 @@
+main{
+	float:left;
+	box-sizing: border-box;
+	line-height: 30px;
+	padding: 20px;
+	width: 75%;
+}
+
+aside{
+	float:left;
+	box-sizing: border-box;
+	line-height: 20px;
+	padding: 20px;
+	width: 25%;
+	background-color:#ccdeeb;
+}
+
 body{
 	background-color: #522e91;
 }
@@ -40,8 +57,12 @@ h1{
 	border-color: #c1d82f;
 	border-width: 10px;
 	border-radius: 20px;
-	background-image: url(images/DesertScale.jpg);
-	background-repeat: no-repeat;
+	/*background-image: url(images/DesertScale.jpg);
+	background-repeat: no-repeat;*/
+}
+
+#background img{
+	border-radius: 5px;
 }
 
 #inventory{
