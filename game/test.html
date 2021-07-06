@@ -11,12 +11,14 @@
 		</header>
 		<main>
 			<div id="background">
-				<img src="images/DesertScale.jpg" id="bg" width = 1280px height = 720px>
+				<img src="images/Bank_Background.png" id="bg" width = 1280px height = 720px>
 				<div id = "findImages">
 					<!-- how will we get this information from the backend? -->
-					<img src="images/Jellyfish.jpg" width = 200px  class = "clickImage" id="clickImage1" onclick='clickImage("clickImage1", "inv1",0);'/>
-					<img src="images/Penguins.jpg" width = 200px class = "clickImage" id="clickImage2" onclick='clickImage("clickImage2", "inv2",1);'/>
-					<img src="images/Tulips.jpg" width = 200px class = "clickImage" id="clickImage3" onclick='clickImage("clickImage3", "inv3",2);'/>
+					<img src="images/Bank_Car.png" class = "clickImage" id="clickImage1" onclick='clickImage("clickImage1", "inv1",0);'/>
+					<img src="images/Bank_Pig.png" class = "clickImage" id="clickImage2" onclick='clickImage("clickImage2", "inv2",1);'/>
+					<img src="images/Bank_Handle.png" class = "clickImage" id="clickImage3" onclick='clickImage("clickImage3", "inv3",2);'/>
+					<img src="images/Bank_ATM.png" class = "clickImage" id="clickImage4" onclick='clickImage("clickImage4", "inv4",3);'/>
+					<img src="images/Bank_Phone.png" class = "clickImage" id="clickImage5" onclick='clickImage("clickImage5", "inv5",4);'/>
 				</div>
 			</div>
 
@@ -26,9 +28,11 @@
 					<input type="button" class = "button" id="myBtn2" value="Reset" onclick='reset();'>
 				</div>
 				<div id="inventoryImages">
-					<img src="images/Jellyfish.jpg" height = 100px width = 100px id = inv1>
-					<img src="images/Penguins.jpg" height = 100px width = 100px id = inv2>
-					<img src="images/Tulips.jpg" height = 100px width = 100px id = inv3>
+					<img src="images/Bank_Car.png" id = inv1 class = inv>
+					<img src="images/Bank_Pig.png" id = inv2 class = inv>
+					<img src="images/Bank_Handle.png" id = inv3 class = inv>
+					<img src="images/Bank_ATM.png" id = inv4 class = inv>
+					<img src="images/Bank_Phone.png" id = inv5 class = inv>
 				</div>
 				
 			</div>
@@ -49,6 +53,12 @@
 			<p>Image 3:
 				<input type="text" id="3">
 			</p>
+			<p>Image 4:
+				<input type="text" id="4">
+			</p>
+			<p>Image 5:
+				<input type="text" id="5">
+			</p>
 			<input type="button" name="submit" value="submit" onclick="getImages()">
 
 			<input type="button" name="defaults" value="defaults" onclick="getDefaults()">
@@ -58,20 +68,26 @@
 			
 			//variables and arrays
 			//store all of the object images and inventory images into an array to pull from later
+			
+			
 			var images = [
 				document.getElementById("clickImage1"),
 				document.getElementById("clickImage2"),
-				document.getElementById("clickImage3")
+				document.getElementById("clickImage3"),
+				document.getElementById("clickImage4"),
+				document.getElementById("clickImage5")
 			]
 
 			var inventory = [
 				document.getElementById("inv1"),
 				document.getElementById("inv2"),
-				document.getElementById("inv3")
+				document.getElementById("inv3"),
+				document.getElementById("inv4"),
+				document.getElementById("inv5")
 			]
 
 			//create an empty array
-			var imageClicked = new Array(3);
+			var imageClicked = new Array(5);
 
 			//populate with false boolean values
 			for(i = 0; i < imageClicked.length; i++){
@@ -89,7 +105,7 @@
 				var background = document.getElementById("background");
 				var backgroundPostion = background.getBoundingClientRect();
 
-				for(x = 0; x < 3; x++){
+				for(x = 0; x < 5; x++){
 
 					var picture = images[x];
 					var picturePosition = picture.getBoundingClientRect();
@@ -155,7 +171,9 @@
 				if(document.getElementById("back").value == "" ||
 					document.getElementById("1").value == "" ||
 					document.getElementById("2").value == "" ||
-					document.getElementById("3").value == ""){
+					document.getElementById("3").value == ""||
+					document.getElementById("4").value == ""||
+					document.getElementById("5").value == ""){
 
 					alert("enter something");
 
@@ -165,16 +183,22 @@
 					image1 = document.getElementById("1").value;
 					image2 = document.getElementById("2").value;
 					image3 = document.getElementById("3").value;
+					image4 = document.getElementById("4").value;
+					image5 = document.getElementById("5").value;
 
 					setBackground(backgroundImage, "bg");
 					setImage(image1, "clickImage1", "inv1");
 					setImage(image2, "clickImage2", "inv2");
 					setImage(image3, "clickImage3", "inv3");
+					setImage(image4, "clickImage4", "inv4");
+					setImage(image5, "clickImage5", "inv5");
 
 					document.getElementById("back").value = "";
 					document.getElementById("1").value = "";
 					document.getElementById("2").value = "";
 					document.getElementById("3").value = "";
+					document.getElementById("4").value = "";
+					document.getElementById("5").value = "";
 				}
 			}
 
