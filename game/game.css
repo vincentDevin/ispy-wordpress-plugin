@@ -1,9 +1,8 @@
 main{
-	float:left;
 	box-sizing: border-box;
-	line-height: 30px;
-	padding: 20px;
-	width: 70%;
+	line-height: 0px;
+	padding-right: 20px;
+	width: 100%;
 }
 
 aside{
@@ -42,7 +41,7 @@ h1{
 	border-radius: 25px;
 	box-shadow: 0 9px #522e91;
 	padding: 18px 16px;
-
+	height:10%; 
 }
 
 .button:hover {
@@ -80,7 +79,9 @@ h1{
 #findImages img{
 	border-radius: 0px;
 }
-
+#inventoryImages{
+	width:70%;
+}
 #inventory{
 	height: 10%;
 	width: 100%;
@@ -99,7 +100,8 @@ h1{
 }
 
 #buttons{
-	float:right;
+	height: 20%;
+	display: flex;
 }
 
 .clickImage{

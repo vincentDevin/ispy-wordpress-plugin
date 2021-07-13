@@ -7,7 +7,6 @@
 	</head>
 	<body onload = "javascript:randomizePosition()">
 		<header>
-			<h1>I-Spy</h1>
 		</header>
 		<main>
 			<div id="background">
@@ -23,10 +22,6 @@
 			</div>
 
 			<div id="inventory"> 
-				<div id="buttons">
-					<input type="button" class ="button" id="myBtn" value="Check" onclick='check();'>
-					<input type="button" class = "button" id="myBtn2" value="Reset" onclick='reset();'>
-				</div>
 				<div id="inventoryImages">
 					<img src="images/Bank_Car.png" id = inv1 class = inv>
 					<img src="images/Bank_Pig.png" id = inv2 class = inv>
@@ -34,11 +29,14 @@
 					<img src="images/Bank_ATM.png" id = inv4 class = inv>
 					<img src="images/Bank_Phone.png" id = inv5 class = inv>
 				</div>
-				
+				<div id="buttons">
+					<input type="button" class ="button" id="myBtn" value="Check" onclick='check();'>
+					<input type="button" class = "button" id="myBtn2" value="Reset" onclick='reset();'>
+				</div>
 			</div>
 		</main>
 			
-		<aside>
+<!-- 		<aside>
 			<h1 id="side">Add Your Own Images</h1>
 
 			<p>Background Image:
@@ -62,14 +60,15 @@
 			<input type="button" name="submit" value="submit" onclick="getImages()">
 
 			<input type="button" name="defaults" value="defaults" onclick="getDefaults()">
-		</aside>
+		</aside> -->
 
 		<script type="text/javascript">
 			
 			//variables and arrays
 			//store all of the object images and inventory images into an array to pull from later
 			
-			
+			var imagePoss = []
+
 			var images = [
 				document.getElementById("clickImage1"),
 				document.getElementById("clickImage2"),
@@ -98,6 +97,9 @@
 			var btn = document.getElementById("myBtn");
 			var btn2 = document.getElementById("myBtn2");
 
+
+			//Getting the width of the page
+			var windowWidth = window.innerWidth;
 			//functions	
 			//prevent images from layering and leaving the boundary of the background div, if we use randomize.
 
@@ -118,10 +120,23 @@
 					while(randomY < picturePosition.height/1.5){
 						randomY = Math.floor(Math.random()*(backgroundPostion.height-picturePosition.height));
 					}
-
-					picture.style.top = randomY + 'px';
-					picture.style.left = randomX + 'px';
+					if(!isOverlap(randomX,randomY)){
+						picture.style.top = randomY + 'px';
+						picture.style.left = randomX + 'px';
+						imagePoss.push({randomX, randomY});
+					}
 				}
+			}
+
+			function isOverlap(x, y) { // return true if overlapping
+			    const img = {x: images[0].getBoundingClientRect().width, y:images[0].getBoundingClientRect().height};
+			    
+			    for(const imgPos of imagePoss) {
+			        if( x>imgPos.x-img.x && x<imgPos.x+img.x &&
+			            y>imgPos.y-img.y && y<imgPos.y+img.y ) return true;
+			        console.log(imgPos)
+			    }
+			    return false;
 			}
 
 			//takes Object Image ID, Inventory Image ID, and an int representing a position on the image clicked boolean array
@@ -203,9 +218,32 @@
 			}
 
 			function getDefaults(){
-					//I can't think of a good reason to have this...
-					location.reload();
+				//I can't think of a good reason to have this...
+				location.reload();
+			}
+			function resize() {
+				var newWindowWidth = window.innerWidth;
+				var percentageChange = (windowWidth/newWindowWidth);
+
+				for(x = 0; x < 5; x++){
+					var picture = images[x];
+					var picturePosition = picture.getBoundingClientRect();
+					console.log(percentageChange);
+					picture.style.top = parseInt(picture.style.top) / percentageChange + 'px';
+					picture.style.left = parseInt(picture.style.left) / percentageChange + 'px';
 				}
+				windowWidth = window.innerWidth;
+			}
+
+
+			var resizeTimer;
+			
+			window.addEventListener("resize", function() {
+			    
+			    clearTimeout(resizeTimer);
+			    
+			    resizeTimer = setTimeout(resize, 1);
+			});
 
 		</script>
 	</body>
