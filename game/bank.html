@@ -10,24 +10,24 @@
 		</header>
 		<main>
 			<div id="background">
-				<img src="images/Bank_BackgroundCrop.png" id="bg" width = 1280px height = 720px>
+				<img src="images/Bank/Bank_BackgroundResized.jpg" id="bg" width = 1280px height = 720px>
 				<div id = "findImages">
 					<!-- how will we get this information from the backend? -->
-					<img src="images/Bank_ATM.png" class = "clickImage" id="clickImage1" onclick='clickImage("clickImage1", "inv1",0);'/>
-					<img src="images/Bank_Car.png" class = "clickImage" id="clickImage2" onload='reset();' onclick='clickImage("clickImage2", "inv2",1);'/>
-					<img src="images/Bank_Handle.png" class = "clickImage" id="clickImage3" onload='reset();' onclick='clickImage("clickImage3", "inv3",2);'/>
-					<img src="images/Bank_Lock.png" class = "clickImage" id="clickImage4" onload='reset();' onclick='clickImage("clickImage4", "inv4",3);'/>
-					<img src="images/Bank_Phone.png" class = "clickImage" id="clickImage5" onload='reset();' onclick='clickImage("clickImage5", "inv5",4);'/>
+					<img src="images/Bank/Bank_ATM.png" class = "clickImage" id="clickImage1" onclick='clickImage("clickImage1", "inv1",0);'/>
+					<img src="images/Bank/Bank_Car.png" class = "clickImage" id="clickImage2" onload='reset();' onclick='clickImage("clickImage2", "inv2",1);'/>
+					<img src="images/Bank/Bank_Handle.png" class = "clickImage" id="clickImage3" onload='reset();' onclick='clickImage("clickImage3", "inv3",2);'/>
+					<img src="images/Bank/Bank_Lock.png" class = "clickImage" id="clickImage4" onload='reset();' onclick='clickImage("clickImage4", "inv4",3);'/>
+					<img src="images/Bank/Bank_Phone.png" class = "clickImage" id="clickImage5" onload='reset();' onclick='clickImage("clickImage5", "inv5",4);'/>
 				</div>
 			</div>
 
 			<div id="inventory"> 
 				<div id="inventoryImages">
-					<img src="images/Bank_ATM.png" id = inv1 class = inv>
-					<img src="images/Bank_Car.png" id = inv2 class = inv>
-					<img src="images/Bank_Handle.png" id = inv3 class = inv>
-					<img src="images/Bank_Lock.png" id = inv4 class = inv>
-					<img src="images/Bank_Phone.png" id = inv5 class = inv>
+					<img src="images/Bank/Bank_ATM.png" id = inv1 class = inv>
+					<img src="images/Bank/Bank_Car.png" id = inv2 class = inv>
+					<img src="images/Bank/Bank_Handle.png" id = inv3 class = inv>
+					<img src="images/Bank/Bank_Lock.png" id = inv4 class = inv>
+					<img src="images/Bank/Bank_Phone.png" id = inv5 class = inv>
 				</div>
 				<div id="buttons">
 					<input type="button" class ="button" id="myBtn" value="Check" onclick='check();'>
@@ -168,7 +168,7 @@
 					alert("Keep looking.");
 				}
 				else{
-					alert("You found them all");
+					alert("You found them all!");
 				}
 			}
 
