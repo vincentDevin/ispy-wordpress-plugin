@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="game.css">
+		<title>Bank ISpy Game</title>
+	</head>
+	<body onload = "javascript:randomizePosition()">
+		<header>
+		</header>
+		<main>
+			<div id="background">
+				<img src="images/WKID/WKID_BackgroundResized.jpg" id="bg" width = 1280px height = 720px>
+				<div id = "findImages">
+					<img src="images/WKID/WKID_Camera.png" class = "clickImage" id="clickImage1" onclick='clickImage("clickImage1", "inv1",0);'/>
+					<img src="images/WKID/WKID_OnAir.png" class = "clickImage" id="clickImage2" onload='reset();' onclick='clickImage("clickImage2", "inv2",1);'/>
+					<img src="images/WKID/WKID_Remote.png" class = "clickImage" id="clickImage3" onload='reset();' onclick='clickImage("clickImage3", "inv3",2);'/>
+					<img src="images/WKID/WKID_Sunny.png" class = "clickImage" id="clickImage4" onload='reset();' onclick='clickImage("clickImage4", "inv4",3);'/>
+					<img src="images/WKID/WKID_Moon.png" class = "clickImage" id="clickImage5" onload='reset();' onclick='clickImage("clickImage5", "inv5",4);'/>
+				</div>
+			</div>
+
+			<div id="inventory"> 
+				<div id="inventoryImages">
+					<img src="images/WKID/WKID_Camera.png" id = inv1 class = inv>
+					<img src="images/WKID/WKID_OnAir.png" id = inv2 class = inv>
+					<img src="images/WKID/WKID_Remote.png" id = inv3 class = inv>
+					<img src="images/WKID/WKID_Sunny.png" id = inv4 class = inv>
+					<img src="images/WKID/WKID_Moon.png" id = inv5 class = inv>
+				</div>
+				<div id="buttons">
+					<input type="button" class ="button" id="myBtn" value="Check" onclick='check();'>
+					<input type="button" class = "button" id="myBtn2" value="Reset" onclick='reset();'>
+				</div>
+			</div>
+			<div id="checkImageAlert">
+				<div class="alertContainer">
+					<h1 id="gameWinText">You found them all!</h1>
+					<h1 id="gameLoseText">Keep looking!</h1>
+					<input type="button" class="alertButton" id="checkImageAlertBtn" value="Okay" onclick='checkImageAlertDismiss();'>
+				</div>
+			</div>
+		</main>
+		<script type="text/javascript" src="gamescript.js"></script>
+	</body>
+</html>
