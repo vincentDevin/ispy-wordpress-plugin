@@ -22,6 +22,7 @@ h1{
 	color:white;
 	font-size: 36px;
 	font-weight: bold;
+	line-height: unset;
 }
 
 .inv{
@@ -63,8 +64,6 @@ h1{
 	border-color: #c1d82f;
 	border-width: 10px;
 	border-radius: 20px;
-	/*background-image: url(images/DesertScale.jpg);
-	background-repeat: no-repeat;*/
 }
 
 #bg{
@@ -92,11 +91,10 @@ h1{
 }
 
 
-#inventory img{
+#inventory img {
 	filter: brightness(0);
 	border-radius:20px;
 	margin-right: 10px;
-
 }
 
 #buttons{
@@ -107,4 +105,54 @@ h1{
 .clickImage{
 	position: absolute;
 	width:10%;
+}
+
+div#checkImageAlert {
+	border: 10px solid #522e91;
+	border-radius: 20px;
+	background-color: #c1d82f;
+	width: 35%;
+	height: 20%;
+	position: absolute;
+  	left: 50%;
+  	top: 35%;
+  	-webkit-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
+  	text-align: center;
+  	padding: 15px;
+  	display: none;
+}
+
+.alertButton {
+	background-color: #00a4e4;
+	color: white;
+	font-size: 30px;
+	cursor: pointer;
+	text-align: center;
+	margin-top: 10px;
+	border: none;
+	border-radius: 25px;
+	box-shadow: 0 9px #522e91;
+	padding: 18px 16px;
+	position: relative;
+	z-index: 100;
+}
+
+.alertButton:hover {
+	background-color: #c1d82f
+}
+
+.alertButton:active {
+  background-color: #c1d82f;
+  box-shadow: 0 5px #251540;
+  transform: translateY(4px);
+}
+
+.alertContainer {
+	width: 100%;
+	position: absolute;
+  	left: 50%;
+  	top: 50%;
+  	-webkit-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
 }
