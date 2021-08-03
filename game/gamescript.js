@@ -133,42 +133,6 @@ function reset(){
  	document.getElementById(imgID).src = newImage;
  }
 
-function getImages(){
-
-	if(document.getElementById("back").value == "" ||
-		document.getElementById("1").value == "" ||
-		document.getElementById("2").value == "" ||
-		document.getElementById("3").value == ""||
-		document.getElementById("4").value == ""||
-		document.getElementById("5").value == ""){
-
-		alert("enter something");
-
-	}
-	else{
-		backgroundImage = document.getElementById("back").value;
-		image1 = document.getElementById("1").value;
-		image2 = document.getElementById("2").value;
-		image3 = document.getElementById("3").value;
-		image4 = document.getElementById("4").value;
-		image5 = document.getElementById("5").value;
-
-		setBackground(backgroundImage, "bg");
-		setImage(image1, "clickImage1", "inv1");
-		setImage(image2, "clickImage2", "inv2");
-		setImage(image3, "clickImage3", "inv3");
-		setImage(image4, "clickImage4", "inv4");
-		setImage(image5, "clickImage5", "inv5");
-
-		document.getElementById("back").value = "";
-		document.getElementById("1").value = "";
-		document.getElementById("2").value = "";
-		document.getElementById("3").value = "";
-		document.getElementById("4").value = "";
-		document.getElementById("5").value = "";
-	}
-}
-
 function resize() {
 	var newWindowWidth = window.innerWidth;
 	var percentageChange = (windowWidth/newWindowWidth);
