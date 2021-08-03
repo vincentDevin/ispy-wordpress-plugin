@@ -30,8 +30,8 @@ var btn2 = document.getElementById("myBtn2");
 
 //Getting the width of the page
 var windowWidth = window.innerWidth;
+
 //functions	
-//prevent images from layering and leaving the boundary of the background div, if we use randomize.
 
 function randomizePosition(){
 	var background = document.getElementById("background");
